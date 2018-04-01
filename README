@@ -60,3 +60,14 @@ The primary libnids site is
 http://libnids.sourceforge.net/
 Please send bug reports, comments, or questions about this software to
 <nergal@7bulls.com>.
+
+6. Building on x86_64
+---------------------
+As pointed out by https://edeca.net/post/2014/03/libnids-on-64-bit-architecture-machines/,
+libnids tcp_callback functions do not seem to be called on machines with an x_86-64
+architecture. This can be solved by passing an additional CFLAGS flag: -fno-strict-aliasing.
+This is in addition to the existing -O2 flag.
+Then, to build (as a shared library):
+      ./configure
+      make shared
+      make _installshared
